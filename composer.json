@@ -1,0 +1,16 @@
+{
+    "name": "samanbank/validation",
+	"authors": [
+        {
+            "name": "amir changizi",
+            "email": "amir.changizi.5@gmail.com"
+        }
+    ],
+    "require": {},
+	"autoload": {
+        "SamanBank\\Validation\\": "validation/",
+        "files": [
+            "validation/helpers.php"
+        ]
+    }
+}
