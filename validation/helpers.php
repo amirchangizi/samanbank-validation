@@ -25,14 +25,7 @@
         }
     }
 
-    if (! function_exists('bankCs'))
-    {
-        function bankCs($nationalCode)
-        {
-            $saman = new SamanValidation();
-            return $saman->bankCs($nationalCode);
-        }
-    }
+
 
     if (! function_exists('samanPersonalInfo'))
     {
