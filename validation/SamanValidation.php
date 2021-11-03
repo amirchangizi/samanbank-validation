@@ -8,6 +8,8 @@
 
     namespace SamanBank\Validation;
 
+    use SoapClient;
+
     class SamanValidation
     {
         public $url;
@@ -39,7 +41,6 @@
                 throw \Exception('BankCs faild.');
 
             return $result->BankCsResult;
-
         }
 
         public function personalInfo($nationalCode ,$birthDate) :array
@@ -63,7 +64,7 @@
             return (array) $result->RegInfoResult;
         }
 
-        public function postInfo(int $postCode) :bool
+        public function postInfo(int $postCode)
         {
             $result = $this->client->__soapCall('PostInfo', [
                 'PostInfo' => [
