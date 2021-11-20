@@ -21,7 +21,7 @@
         function bankCs($nationalCode)
         {
             $saman = new SamanValidation();
-            $saman->bankCs($nationalCode);
+            return $saman->bankCs($nationalCode);
         }
     }
 
