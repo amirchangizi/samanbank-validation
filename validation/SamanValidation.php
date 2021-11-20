@@ -37,31 +37,31 @@
                 ]
             ]);
 
-            if(!$result->BankCsResult->ServiceStatus == "Success")
+            if (!$result->BankCsResult->ServiceStatus == "Success")
                 throw \Exception('BankCs faild.');
 
             return $result->BankCsResult;
         }
 
-        public function personalInfo($nationalCode ,$birthDate) :array
+        public function personalInfo($nationalCode, $birthDate): array
         {
-            list($y ,$m ,$d) = explode('/',$birthDate);
+            [$y, $m, $d] = explode('-', $birthDate);
             $result = $this->client->__soapCall('RegInfo', [
                 'RegInfo' => [
                     "accountModel" => $this->accountModel(),
                     'nationalCode' => $nationalCode,
-                    'birthDate' => [
-                        "Day"=>$d,
-                        "Month"=>$m,
-                        "Year"=>$y
+                    'birthDate'    => [
+                        "Day"   => $d,
+                        "Month" => $m,
+                        "Year"  => $y
                     ]
                 ]
             ]);
 
-            if(!$result->RegInfoResult->ServiceStatus == "Success")
+            if (!$result->RegInfoResult->ServiceStatus == "Success")
                 throw \Exception('region info mismatch');
 
-            return (array) $result->RegInfoResult;
+            return (array)$result->RegInfoResult;
         }
 
         public function postInfo(int $postCode)
@@ -69,7 +69,7 @@
             $result = $this->client->__soapCall('PostInfo', [
                 'PostInfo' => [
                     "accountModel" => $this->accountModel(),
-                    'postCode' => $postCode
+                    'postCode'     => $postCode
                 ]
             ]);
 
@@ -79,8 +79,9 @@
             return $result->PostInfoResult->Result;
         }
 
-        public function mobileMatching($mobile, $nationalCode):bool
+        public function mobileMatching($mobile, $nationalCode): bool
         {
+            ini_set('default_socket_timeout', 600);
             $result = $this->client->__soapCall("MobileAndNationalCodeMatching", [
                 "MobileAndNationalCodeMatching" => [
                     "accountModel" => $this->accountModel(),
