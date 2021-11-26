@@ -79,7 +79,7 @@
             return $result->PostInfoResult->Result;
         }
 
-        public function mobileMatching($mobile, $nationalCode): bool
+        public function mobileMatching($mobile, $nationalCode)
         {
             ini_set('default_socket_timeout', 600);
             $result = $this->client->__soapCall("MobileAndNationalCodeMatching", [
