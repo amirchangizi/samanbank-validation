@@ -91,7 +91,7 @@
             ]);
 
             if (!$result->MobileAndNationalCodeMatchingResult->ServiceStatus == "Success")
-                throw \Exception('mobile and national code mismatch');
+                return false;
 
             return $result->MobileAndNationalCodeMatchingResult->Result;
         }
