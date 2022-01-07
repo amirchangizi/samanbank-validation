@@ -93,7 +93,7 @@
             if (!$result->MobileAndNationalCodeMatchingResult->ServiceStatus == "Success")
                 return false;
 
-            return $result->MobileAndNationalCodeMatchingResult->Result;
+            return (int)$result->MobileAndNationalCodeMatchingResult->Result;
         }
 
         protected function accountModel()
